@@ -1,0 +1,16 @@
+home:
+    title: "Steam Ish - V4 : le meilleur du G4ming !"
+
+game:
+    show:
+        title: "Acheter %gameName% !"
+        title_reverse: "%gameName% acheter !"
+
+user:
+    properties:
+        name: "Nom d'utilisateur"
+        nickname: "Pseudo"
+        country: "Pays"
+        email: "Email"
+        password: "Password"
+        profileImage: "Image de profil"
