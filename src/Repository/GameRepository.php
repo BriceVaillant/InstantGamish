@@ -16,7 +16,15 @@ class GameRepository extends ServiceEntityRepository
     parent::__construct($registry, Game::class);
   }
 
-
+  public function findAllGames(): array
+  {
+    return $this->createQueryBuilder('g')
+      ->orderBy('g.name', 'ASC')
+      ->groupBy('g.id')
+      ->setMaxResults(100)
+      ->getQuery()
+      ->getResult();
+  }
 
   /**
    * @return Game[] Returns an array of Game objects
@@ -80,6 +88,21 @@ class GameRepository extends ServiceEntityRepository
   }
 
 
+  /**
+   * @return Game[] Returns an array of Game objects
+   */
+  public function LatestGamesSold(int $value): array
+  {
+    return $this->createQueryBuilder('g')
+      ->select('g', 'uog', 'u')
+      ->Join('g.userOwnGames', 'uog')
+      ->Join('uog.user', 'u')
+      ->orderBy('uog.createdAt', 'DESC')
+      ->setMaxResults($value)
+      ->groupBy('g.id')
+      ->getQuery()
+      ->getResult();
+  }
 
 
   //    public function findOneBySomeField($value): ?Game

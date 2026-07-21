@@ -1,10 +1,31 @@
-{# this will the side bar of the dashboard in an admin section  #}
-<div class="container">
-	<div class="col-2 border-end border-2 border-dark">
-		<a href="path('app_home') ">home</a>
-		<ul class="list-group">
-			<li class="list-group-item">trch</li>
-		</ul>
-	</div>
-</div>
+<ul class="list-group">
+	<a href="{{path("app_home") }}">
+		<li class="list-group-item">Home</li>
+	</a>
+	<a href="{{path("admin_dashboard") }}">
+		<li class="list-group-item">
+			Index
+		</li>
+	</a>
+	<a href="{{ path("admin_category_index") }}">
+		<li class="list-group-item selected">Categories</li>
+	</a>
 
+	<a href="{{path("admin_game_index") }}">
+		<li class="list-group-item">
+			Games
+		</li>
+	</a>
+
+	<a href="{{path("admin_publisher_index") }}">
+		<li class="list-group-item">
+			Publishers
+		</li>
+	</a>
+
+
+	<li class="list-group-item">reviews</li>
+
+	<li class="list-group-item">countries</li>
+
+</ul>

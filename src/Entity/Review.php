@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 class Review
@@ -21,12 +22,13 @@ class Review
   private ?\DateTimeImmutable $createdAt = null;
 
   #[ORM\Column]
-  private ?int $downvote = null;
+  private ?int $downvote = 0;
 
   #[ORM\Column]
-  private ?int $upvote = null;
+  private ?int $upvote = 0;
 
   #[ORM\Column]
+  #[Assert\Range(min: 0, max: 5)]
   private ?int $rating = null;
 
   #[ORM\ManyToOne(inversedBy: 'reviews')]
